@@ -1,0 +1,13 @@
+{
+  "name": "lab.1",
+  "version": "1.0.0",
+  "private": true,
+  "author": "111",
+  "dependencies": {
+    "jasmine": "^2.6.0",
+    "jasmine-console-reporter": "^1.2.7",
+    "jasmine-spec-reporter": "^4.1.1",
+    "jasmine2-custom-message": "^0.8.4",
+    "protractor": "^5.2.0"
+  }
+}
