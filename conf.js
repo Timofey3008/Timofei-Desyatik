@@ -1,6 +1,9 @@
+var downloadsPath = __dirname;
+
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['./spec/test2.js'],
+    specs: ['spec/**/*.e2e-spec.js'],
+   // specs: ['./spec/test2.js'],
 
     multiCapabilities: [{
         'browserName': 'chrome'
@@ -37,10 +40,20 @@ exports.config = {
                 failure: 'red',
                 pending: 'yellow'
             },
+            prefs: {
+                'download': {
+                    'prompt_for_download': false,
+                    'default_directory': downloadsPath
+                }
+            },
             prefixes: {
                 success: '+ ',
                 failure: '- ',
                 pending: '~ '
+            },
+            downloading: {
+                path: downloadsPath,
+                fileName : '/report.xlsx'
             },
             customProcessors: []
         }));
