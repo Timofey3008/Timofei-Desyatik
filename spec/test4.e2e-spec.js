@@ -1,10 +1,11 @@
 var Random = require('../PageObject/Random.js'),
-data = require('../fixtures/data.json'),
-RightMenu = require('../PageObject/RightMenu.js'),
-LeftMenu = require('../PageObject/LeftMenu.js'),
-Header = require('../PageObject/Header.js'),
-CreationForm = require('../PageObject/CreationForm'),
-Center = require('../PageObject/Center.js');
+    RightMenu = require('../PageObject/RightMenu.js'),
+    LeftMenu = require('../PageObject/LeftMenu.js'),
+    Header = require('../PageObject/Header.js'),
+    CreationForm = require('../PageObject/CreationForm'),
+    Center = require('../PageObject/Center.js'),
+    Open = require('../util/Open.js'),
+    Value = require('../fixtures/Test4.data.json');
 describe('Protractor Demo App', function() {
 
     var random = new Random(),
@@ -17,9 +18,10 @@ describe('Protractor Demo App', function() {
     beforeAll(function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
     });
-    it('Open page Publikationspflege', function () {
-        leftMenu.menuPublikationspflege.click();
-        expect(header.headerName.getText()).toEqual('PuC.Marketing Publikationspflege');
+
+    it('should set title value like menus element', function () {
+        Open.openMenu(Value.PublikationFlage);
+        expect(header.headerName.getText()).toEqual("PuC.Marketing " + Value.PublikationFlage);
     });
     it ('Add new entry', function () {
         center.buttonNew.click();
@@ -28,15 +30,16 @@ describe('Protractor Demo App', function() {
         created.saison.click();
         browser.wait(EC.visibilityOf(created.nummerCreate));
         var a = random.getRandomValue();
+        created.nummerCreate.clear();
         created.nummerCreate.sendKeys(a);
         created.typCreate.click();
         created.hauptCreate.clear();
-        created.hauptCreate.sendKeys('05.05.2017');
+        created.hauptCreate.sendKeys(Value.date);
         created.preiseCreate.click();
         created.warenabgabeCreate.clear();
-        created.warenabgabeCreate.sendKeys('05.05.2017');
+        created.warenabgabeCreate.sendKeys(Value.date);
         created.landCreate.click();
-        created.kommentarCreate.sendKeys('test');
+        created.kommentarCreate.sendKeys(Value.test);
         created.anlegen.click();
         browser.wait(EC.visibilityOf(center.newEntry));
         expect(center.newEntry.isPresent()).toBe(true, 'new record was not created');

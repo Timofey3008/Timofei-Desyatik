@@ -1,13 +1,13 @@
-var
-    RightMenu = require('../PageObject/RightMenu.js'),
+var RightMenu = require('../PageObject/RightMenu.js'),
     LeftMenu = require('../PageObject/LeftMenu.js'),
     Header = require('../PageObject/Header.js'),
     CreationForm = require('../PageObject/CreationForm'),
+    Open = require('../util/Open.js'),
+    Value = require('../fixtures/Test6.data.json');
     Center = require('../PageObject/Center.js');
 describe('Protractor Demo App', function() {
 
-    var
-        rightMenu = new RightMenu(),
+    var rightMenu = new RightMenu(),
         center = new Center(),
         leftMenu = new LeftMenu(),
         header = new Header(),
@@ -17,23 +17,27 @@ describe('Protractor Demo App', function() {
     beforeAll(function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
     });
-    it('Open page Publikationspflege', function () {
-        leftMenu.menuPublikationspflege.click();
-        expect(header.headerName.getText()).toEqual('PuC.Marketing Publikationspflege');
+    it('should set title value like menus element', function () {
+        Open.openMenu(Value.PublikationFlage);
+        expect(header.headerName.getText()).toEqual("PuC.Marketing " + Value.PublikationFlage);
     });
         it('Open 39, Frühling/Sommer 2015', function () {
-            browser.actions().doubleClick(center.name39).perform();
-            browser.wait(EC.visibilityOf(center.nameInszenierungspunkt));
-            browser.actions().doubleClick(center.nameInszenierungspunkt).perform();
-            browser.wait(EC.visibilityOf(center.name3911));
-            center.name3911.click();
-
+           // browser.actions().doubleClick(center.name39).perform();
+            //browser.wait(EC.visibilityOf(center.nameInszenierungspunkt));
+            //browser.actions().doubleClick(center.nameInszenierungspunkt).perform();
+            //browser.wait(EC.visibilityOf(center.name3911));
+           // center.name3911.click();
+            Open.click(Value.name3911);
         });
-        it('Open Artikelzuordnung', function () {
-            leftMenu.menuEINKAUF.click();
-            browser.wait(EC.visibilityOf(leftMenu.menuArtikelzuordnung));
-           leftMenu.menuArtikelzuordnung.click();
-           expect(header.headerName.getText()).toEqual('PuC.Marketing Artikelzuordnung');
+    it('should set title value like menus element', function () {
+        Open.openMenu(Value.einkauf);
+        Open.openMenu(Value.Artikelzuordnung);
+        expect(header.headerName.getText()).toEqual("PuC.Marketing " + Value.Artikelzuordnung);
+     //   it('Open Artikelzuordnung', function () {
+         //   leftMenu.menuEINKAUF.click();
+          //  browser.wait(EC.visibilityOf(leftMenu.menuArtikelzuordnung));
+          // leftMenu.menuArtikelzuordnung.click();
+          // expect(header.headerName.getText()).toEqual('PuC.Marketing Artikelzuordnung');
 
         });
         it('Add new Artikelzuordnung', function () {

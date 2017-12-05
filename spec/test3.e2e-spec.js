@@ -1,36 +1,45 @@
-var Vorteile = require('../PageObject/vorteile.js');
+var Vorteile = require('../PageObject/vorteile.js'),
+    Open = require('../util/Open.js'),
+    Header = require('../PageObject/Header.js'),
+    Value = require('../fixtures/Test3.data.json');
 describe('Protractor Demo App', function() {
 
     var page = new Vorteile();
+    var header = new Header();
     var EC = protractor.ExpectedConditions;
 
     beforeAll(function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
     });
-    it('Open page Vorteile', function () {
-        browser.wait(EC.visibilityOf(page.menuStammdaten));
-        page.menuStammdaten.click();
-        browser.wait(EC.visibilityOf(page.menuVorteile));
-        page.menuVorteile.click();
-        expect(page.headerVorteile.getText()).toEqual('PuC.Marketing Vorteile');
+    it('should set title value like menus element', function () {
+        Open.openMenu(Value.stammdaten);
+        Open.openMenu(Value.headerVorteile);
+        expect(header.headerName.getText()).toEqual('PuC.Marketing ' + Value.headerVorteile);
     });
+   // it('Open page Vorteile', function () {
+      //  browser.wait(EC.visibilityOf(page.menuStammdaten));
+      //  page.menuStammdaten.click();
+      //  browser.wait(EC.visibilityOf(page.menuVorteile));
+      //  page.menuVorteile.click();
+      //  expect(page.headerVorteile.getText()).toEqual(Value.headerVorteile);
+  //  });
     it('Select string', function () {
        page.selectVR4.click();
-       expect(page.nameVR4.getAttribute('value')).toEqual('VR_4');
+       expect(page.nameVR4.getAttribute('value')).toEqual(Value.nameVR4);
     });
     it('Create new name', function () {
         page.buttonAdd.click();
-        page.inpuName.sendKeys('Test_create');
+        page.inpuName.sendKeys(Value.imputName);
         page.buttonAnlegen.click();
-        expect(page.testName.getText()).toEqual('Test_create');
+        expect(page.testName.getText()).toEqual(Value.imputName);
     });
     it('Edit name', function () {
         page.testName.click();
         page.testCreate.clear();
-        page.testCreate.sendKeys('Test_edit');
+        page.testCreate.sendKeys(Value.testEdit);
         page.buttonSave.click();
         browser.wait(EC.visibilityOf(page.testEdit));
-        expect(page.testEdit.getText()).toEqual('Test_edit');
+        expect(page.testEdit.getText()).toEqual(Value.testEdit);
     });
     it('Delete name', function () {
        page.testEdit.click();
