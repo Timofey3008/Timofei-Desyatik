@@ -7,7 +7,6 @@ function CommonUtil() {
     /**
      * Ожидает прорисовку элемента и кликает на него
      * @param {ElementFinder} elem - элемент, на который необходимо нажать
-     * @returns {Promise.<void>}
      */
 
     that.waitVisibilityAndClick = function (elem) {
@@ -16,7 +15,8 @@ function CommonUtil() {
             .wait(
               EC.visibilityOf(elem),
                browser.params.visibilityWaitingTime.elementDrawing,
-                'cant click, element is not visible.')
+                'cant click, element is not visible.'
+            )
             .then(function () {
                 return elem.click();
             });
@@ -26,7 +26,8 @@ function CommonUtil() {
             .wait(
                 EC.visibilityOf(elem),
                 browser.params.visibilityWaitingTime.elementDrawing,
-                'cant click, element is not visible.')
+                'cant click, element is not visible.'
+            )
             .then(function () {
                 return  browser.actions().doubleClick(elem).perform();
             });
@@ -37,4 +38,14 @@ function CommonUtil() {
                 return elem.click();
             });
     };
+    that.clearAndInput = function (elem,value) {
+        browser.wait(EC.visibilityOf(elem))
+            .then (function() {
+                return elem.clear()
+            })
+            .then (function() {
+                return elem.sendKeys(value)
+            })
+    }
+
 }

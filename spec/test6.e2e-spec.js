@@ -3,8 +3,8 @@ var RightMenu = require('../PageObject/RightMenu.js'),
     Header = require('../PageObject/Header.js'),
     CreationForm = require('../PageObject/CreationForm'),
     Open = require('../util/Open.js'),
-    Value = require('../fixtures/Test6.data.json');
-    Center = require('../PageObject/Center.js');
+    Value = require('../Value/Test6.data.json');
+    Center = require('../PageObject/CentralTree.js');
 describe('Protractor Demo App', function() {
 
     var rightMenu = new RightMenu(),
@@ -27,6 +27,8 @@ describe('Protractor Demo App', function() {
             //browser.actions().doubleClick(center.nameInszenierungspunkt).perform();
             //browser.wait(EC.visibilityOf(center.name3911));
            // center.name3911.click();
+           // Open.openTree(Value.name39);
+            Open.openTree(Value.Inszenierungspunkt);
             Open.click(Value.name3911);
         });
     it('should set title value like menus element', function () {

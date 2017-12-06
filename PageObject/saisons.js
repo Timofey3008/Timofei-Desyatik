@@ -2,7 +2,7 @@ module.exports = saisons;
 function saisons() {
     var menu = $('#westLayout'),
         header = $('#header'),
-        center = $('#center');
+        center = $('#center'),
         rightMenu = $('#eastLayout');
     var that = this;
    // that.menuStammdaten = menu.element(by.cssContainingText(".text-justify.ng-binding", "STAMMDATEN"));
@@ -13,4 +13,5 @@ function saisons() {
     that.itemName = rightMenu.element(by.model('item.name'));
     that.dataItem = rightMenu.element(by.cssContainingText('.row.smallspacer.col-def', 'Startdatum')).$('.form-control.ng-valid.ng-valid-required');
     that.endDate = rightMenu.element(by.cssContainingText('.row.smallspacer.col-def', 'Enddatum')).$('.form-control.ng-valid.ng-valid-required');
+
 };

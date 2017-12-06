@@ -1,7 +1,7 @@
 var Vorteile = require('../PageObject/vorteile.js'),
     Open = require('../util/Open.js'),
     Header = require('../PageObject/Header.js'),
-    Value = require('../fixtures/Test3.data.json');
+    Value = require('../Value/Test3.data.json');
 describe('Protractor Demo App', function() {
 
     var page = new Vorteile();

@@ -3,8 +3,8 @@ var RightMenu = require('../PageObject/RightMenu.js'),
     Header = require('../PageObject/Header.js'),
     CreationForm = require('../PageObject/CreationForm'),
     Open = require('../util/Open.js'),
-    Value = require('../fixtures/Test5.data.json');
-    Center = require('../PageObject/Center.js');
+    Value = require('../Value/Test5.data.json');
+    Center = require('../PageObject/CentralTree.js');
 describe('Protractor Demo App', function() {
 
     var rightMenu = new RightMenu(),
@@ -22,8 +22,9 @@ describe('Protractor Demo App', function() {
     });
     it('Open 39, Frühling/Sommer 2015', function () {
         Open.openTree(Value.name39);
-        browser.wait(EC.visibilityOf(center.nameInszenierungspunkt));
-        browser.actions().doubleClick(center.nameInszenierungspunkt).perform();
+       Open.openTree(Value.Inszenierungspunkt);
+        // browser.wait(EC.visibilityOf(center.nameInszenierungspunkt));
+        //browser.actions().doubleClick(center.nameInszenierungspunkt).perform();
         //Open.openTree(Value.nameInszenierungspunkt);
         Open.click(Value.name3911)
         //browser.actions().doubleClick(center.name39).perform();
@@ -37,6 +38,6 @@ describe('Protractor Demo App', function() {
         expect(header.headerName.getText()).toEqual('PuC.Marketing ' + Value.Streuplan);
     });
     it('lab 5, step 4 - should save file', function () {
-            center.saveButton.click();
+        center.saveButton.click();
         });
 });

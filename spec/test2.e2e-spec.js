@@ -1,7 +1,7 @@
 var saisons = require('../PageObject/saisons.js'),
     Open = require('../util/Open.js'),
     Header = require('../PageObject/Header.js'),
-    Value = require('../fixtures/Test2.data.json');
+    Value = require('../Value/Test2.data.json');
 describe('Protractor Demo App', function() {
 
     var page = new saisons();

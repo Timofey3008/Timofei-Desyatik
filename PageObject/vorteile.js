@@ -2,7 +2,7 @@ module.exports = Vorteile;
 function Vorteile() {
     var menu = $('#westLayout'),
         header = $('#header'),
-        center = $('#center');
+        center = $('#center'),
     rightMenu = $('#eastLayout');
     var that = this;
    // that.menuStammdaten = menu.element(by.cssContainingText(".text-justify.ng-binding", "STAMMDATEN"));
