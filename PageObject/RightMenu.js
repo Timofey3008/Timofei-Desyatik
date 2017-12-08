@@ -1,4 +1,5 @@
 module.exports = RightMenu;
+
 function RightMenu() {
     var rightMenu = $('#eastLayout'),
         that = this;
@@ -15,4 +16,4 @@ function RightMenu() {
     that.button = rightMenu.$('.btn.fa-undo');
     that.textmessage = rightMenu.$('.cp-text-color.ng-binding');
     that.Numer = rightMenu.element(by.cssContainingText('.row.smallspacer.col-def', 'EShop-Nr.')).$('.input-sm.form-control');
-};
+}

@@ -1,18 +1,11 @@
-var RightMenu = require('../PageObject/RightMenu.js'),
-    LeftMenu = require('../PageObject/LeftMenu.js'),
-    Header = require('../PageObject/Header.js'),
-    CreationForm = require('../PageObject/CreationForm'),
+var Header = require('../PageObject/Header.js'),
     Open = require('../util/Open.js'),
-    Value = require('../Value/Test5.data.json');
+    Value = require('../Value/Test5.data.json'),
     Center = require('../PageObject/CentralTree.js');
-describe('Protractor Demo App', function() {
+describe('Protractor Demo App', function () {
 
-    var rightMenu = new RightMenu(),
-        center = new Center(),
-        leftMenu = new LeftMenu(),
-        header = new Header(),
-        created = new CreationForm(),
-        EC = protractor.ExpectedConditions;
+    var center = new Center(),
+        header = new Header();
     beforeAll(function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
     });
@@ -21,23 +14,13 @@ describe('Protractor Demo App', function() {
         expect(header.headerName.getText()).toEqual("PuC.Marketing " + Value.PublikationFlage);
     });
     it('Open 39, Frühling/Sommer 2015', function () {
-        Open.openTree(Value.name39);
-       Open.openTree(Value.Inszenierungspunkt);
-        // browser.wait(EC.visibilityOf(center.nameInszenierungspunkt));
-        //browser.actions().doubleClick(center.nameInszenierungspunkt).perform();
-        //Open.openTree(Value.nameInszenierungspunkt);
-        Open.click(Value.name3911)
-        //browser.actions().doubleClick(center.name39).perform();
-        //browser.wait(EC.visibilityOf(center.nameInszenierungspunkt));
-       // browser.actions().doubleClick(center.nameInszenierungspunkt).perform();
-        //browser.wait(EC.visibilityOf(center.name3911));
-       // center.name3911.click();
-        });
+        Open.openTree(Value.name39, Value.Inszenierungspunkt, Value.name3911);
+    });
     it('Open Streuplan', function () {
         Open.openMenu(Value.Streuplan);
         expect(header.headerName.getText()).toEqual('PuC.Marketing ' + Value.Streuplan);
     });
     it('lab 5, step 4 - should save file', function () {
         center.saveButton.click();
-        });
+    });
 });

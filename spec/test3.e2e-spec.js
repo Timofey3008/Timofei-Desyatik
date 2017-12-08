@@ -2,11 +2,11 @@ var Vorteile = require('../PageObject/vorteile.js'),
     Open = require('../util/Open.js'),
     Header = require('../PageObject/Header.js'),
     Value = require('../Value/Test3.data.json');
-describe('Protractor Demo App', function() {
+describe('Protractor Demo App', function () {
 
-    var page = new Vorteile();
-    var header = new Header();
-    var EC = protractor.ExpectedConditions;
+    var page = new Vorteile(),
+        header = new Header(),
+        EC = protractor.ExpectedConditions;
 
     beforeAll(function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
@@ -16,16 +16,9 @@ describe('Protractor Demo App', function() {
         Open.openMenu(Value.headerVorteile);
         expect(header.headerName.getText()).toEqual('PuC.Marketing ' + Value.headerVorteile);
     });
-   // it('Open page Vorteile', function () {
-      //  browser.wait(EC.visibilityOf(page.menuStammdaten));
-      //  page.menuStammdaten.click();
-      //  browser.wait(EC.visibilityOf(page.menuVorteile));
-      //  page.menuVorteile.click();
-      //  expect(page.headerVorteile.getText()).toEqual(Value.headerVorteile);
-  //  });
     it('Select string', function () {
-       page.selectVR4.click();
-       expect(page.nameVR4.getAttribute('value')).toEqual(Value.nameVR4);
+        page.selectVR4.click();
+        expect(page.nameVR4.getAttribute('value')).toEqual(Value.nameVR4);
     });
     it('Create new name', function () {
         page.buttonAdd.click();
@@ -42,9 +35,9 @@ describe('Protractor Demo App', function() {
         expect(page.testEdit.getText()).toEqual(Value.testEdit);
     });
     it('Delete name', function () {
-       page.testEdit.click();
-       page.buttodDelete.click();
-       page.buttonJa.click();
-       expect(page.testEdit.isPresent()).toBe(false);
+        page.testEdit.click();
+        page.buttodDelete.click();
+        page.buttonJa.click();
+        expect(page.testEdit.isPresent()).toBe(false);
     });
 });

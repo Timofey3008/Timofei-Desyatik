@@ -1,13 +1,9 @@
 module.exports = Vorteile;
+
 function Vorteile() {
-    var menu = $('#westLayout'),
-        header = $('#header'),
-        center = $('#center'),
-    rightMenu = $('#eastLayout');
-    var that = this;
-   // that.menuStammdaten = menu.element(by.cssContainingText(".text-justify.ng-binding", "STAMMDATEN"));
-   // that.menuVorteile = menu.element(by.cssContainingText(".list-group-item", "Vorteile"));
-    //that.headerVorteile = header;
+    var center = $('#center'),
+        rightMenu = $('#eastLayout'),
+        that = this;
     that.selectVR4 = center.element(by.cssContainingText('span', 'VR_4'));
     that.nameVR4 = rightMenu.$('.form-control');
     that.buttonAdd = center.$('.glyphicon.glyphicon-plus');
@@ -19,4 +15,4 @@ function Vorteile() {
     that.buttonSave = rightMenu.$('.fa.fa-floppy-o');
     that.buttodDelete = center.$('.glyphicon.glyphicon-minus');
     that.buttonJa = element(by.cssContainingText('.btn.btn-default.ng-binding', 'Ja'));
-};
+}

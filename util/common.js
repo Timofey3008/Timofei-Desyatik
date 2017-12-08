@@ -13,8 +13,8 @@ function CommonUtil() {
 
         return browser
             .wait(
-              EC.visibilityOf(elem),
-               browser.params.visibilityWaitingTime.elementDrawing,
+                EC.visibilityOf(elem),
+                browser.params.visibilityWaitingTime.elementDrawing,
                 'cant click, element is not visible.'
             )
             .then(function () {
@@ -29,21 +29,21 @@ function CommonUtil() {
                 'cant click, element is not visible.'
             )
             .then(function () {
-                return  browser.actions().doubleClick(elem).perform();
+                return browser.actions().doubleClick(elem).perform()
             });
     };
     that.click = function (elem) {
         browser.wait(EC.visibilityOf(elem))
-            .then (function() {
+            .then(function () {
                 return elem.click();
             });
     };
-    that.clearAndInput = function (elem,value) {
+    that.clearAndInput = function (elem, value) {
         browser.wait(EC.visibilityOf(elem))
-            .then (function() {
+            .then(function () {
                 return elem.clear()
             })
-            .then (function() {
+            .then(function () {
                 return elem.sendKeys(value)
             })
     }

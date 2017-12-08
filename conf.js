@@ -36,7 +36,7 @@ exports.config = {
         },
         downloading: {
             path: downloadsPath,
-            fileName : '/report.xlsx'
+            fileName: '/report.xlsx'
         }
     }
 };
