@@ -33,13 +33,13 @@ function CommonUtil() {
             });
     };
     that.click = function (elem) {
-        browser.wait(EC.visibilityOf(elem))
+       return browser.wait(EC.visibilityOf(elem))
             .then(function () {
                 return elem.click();
             });
     };
     that.clearAndInput = function (elem, value) {
-        browser.wait(EC.visibilityOf(elem))
+      return browser.wait(EC.visibilityOf(elem))
             .then(function () {
                 return elem.clear()
             })

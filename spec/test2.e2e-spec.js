@@ -12,13 +12,11 @@ describe('Protractor Demo App', function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
     });
     it('should set title value like menus element', function () {
-        Open.openMenu(Value.stammdaten);
-        Open.openMenu(Value.saisons);
+        Open.openMenu(Value.stammdaten, Value.saisons);
         expect(header.headerName.getText()).toEqual('PuC.Marketing ' + Value.saisons);
     });
     it('Select 34', function () {
-        browser.wait(EC.visibilityOf(page.select34));
-        page.select34.click();
+        Open.selectSesion(Value.name);
         expect(page.name.getAttribute('value')).toEqual(Value.name);
         expect(page.itemName.getAttribute('value')).toEqual(Value.itemName);
         expect(page.dataItem.getAttribute('value')).toEqual('01.09.2012');

@@ -16,15 +16,14 @@ describe('Protractor Demo App', function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
     });
     it('should set title value like menus element', function () {
-        Open.openMenu(Value.PublikationFlage);
+        Open.openMenu(Value.marketing, Value.PublikationFlage);
         expect(header.headerName.getText()).toEqual("PuC.Marketing " + Value.PublikationFlage);
     });
     it('Open 39, Frühling/Sommer 2015', function () {
         Open.openTree(Value.name39, Value.Inszenierungspunkt, Value.name3911);
     });
     it('should set title value like menus element', function () {
-        Open.openMenu(Value.einkauf);
-        Open.openMenu(Value.Artikelzuordnung);
+        Open.openMenu(Value.einkauf, Value.Artikelzuordnung);
         expect(header.headerName.getText()).toEqual("PuC.Marketing " + Value.Artikelzuordnung);
     });
     it('Add new Artikelzuordnung', function () {
@@ -33,7 +32,7 @@ describe('Protractor Demo App', function () {
         created.Publikationsteil.click();
         created.Und.click();
         created.Anlegen.click();
-        expect(center.Eshop.isPresent()).toBe(true);
+        expect(center.Eshop.isDisplayed()).toBe(true);
     });
     it('Add Eshop', function () {
         browser.actions().sendKeys(protractor.Key.ENTER).perform();
@@ -43,7 +42,7 @@ describe('Protractor Demo App', function () {
     });
     it('Cancel table', function () {
         center.refreshButton.click();
-        expect(center.Eshop2.isPresent()).toBe(false);
+        expect(center.Eshop2.isDisplayed()).toBe(false);
     });
 });
 

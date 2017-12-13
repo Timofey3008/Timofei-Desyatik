@@ -12,8 +12,7 @@ describe('Protractor Demo App', function () {
         browser.get('http://vtest16:8093/catalog-planning/#/productionsEditor');
     });
     it('should set title value like menus element', function () {
-        Open.openMenu(Value.stammdaten);
-        Open.openMenu(Value.headerVorteile);
+        Open.openMenu(Value.stammdaten, Value.headerVorteile);
         expect(header.headerName.getText()).toEqual('PuC.Marketing ' + Value.headerVorteile);
     });
     it('Select string', function () {

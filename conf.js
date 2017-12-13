@@ -23,7 +23,7 @@ exports.config = {
             }
         }
     },
-    specs: ['spec/**/*.e2e-spec.js'],
+    specs: ['spec/**/test2.e2e-spec.js'],
     params: {
         baseUrl: 'http://vtest16:8093/catalog-planning/#/productionsEditor',
         randomValues: {
@@ -31,7 +31,7 @@ exports.config = {
             to: 9999
         },
         visibilityWaitingTime: {
-            fileDownloading: 3000,
+            fileDownloading: 8000,
             elementDrawing: 6000
         },
         downloading: {
