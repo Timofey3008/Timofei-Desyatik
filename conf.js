@@ -23,7 +23,7 @@ exports.config = {
             }
         }
     },
-    specs: ['spec/**/test2.e2e-spec.js'],
+    specs: ['spec/**/*.e2e-spec.js'],
     params: {
         baseUrl: 'http://vtest16:8093/catalog-planning/#/productionsEditor',
         randomValues: {

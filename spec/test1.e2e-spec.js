@@ -17,8 +17,8 @@ describe('Protractor Demo App', function () {
         Method.openTree(Value.nameTree, Value.nameProspect, Value.name6556);
         expect(rightMenu.nummer.getAttribute('value')).toEqual(Value.nummer);
         expect(rightMenu.typ.getAttribute('value')).toEqual(Value.typ);
-        expect(rightMenu.ET.getAttribute('value')).toEqual(Value.ET);
-        expect(rightMenu.Preise.getAttribute('value')).toEqual(Value.preise);
+        expect(rightMenu.et.getAttribute('value')).toEqual(Value.ET);
+        expect(rightMenu.preise.getAttribute('value')).toEqual(Value.preise);
     });
     it('New input', function () {
         Method.inputInRightCreationForm(Value.Nummer, Value.nummerEdit);
@@ -29,8 +29,8 @@ describe('Protractor Demo App', function () {
         Method.inputInRightCreationForm(Value.Kommentar, Value.komentar);
         expect(rightMenu.nummer.getAttribute('value')).toEqual(Value.nummerEdit);
         expect(rightMenu.typ.getAttribute('value')).toEqual(Value.typEdit);
-        expect(rightMenu.ET.getAttribute('value')).toEqual(Value.ETedit);
-        expect(rightMenu.Preise.getAttribute('value')).toEqual(Value.preiseEdit);
+        expect(rightMenu.et.getAttribute('value')).toEqual(Value.ETedit);
+        expect(rightMenu.preise.getAttribute('value')).toEqual(Value.preiseEdit);
         expect(rightMenu.country.getAttribute('value')).toEqual(Value.country);
         expect(rightMenu.kommentar.getAttribute('value')).toEqual(Value.komentar);
     });

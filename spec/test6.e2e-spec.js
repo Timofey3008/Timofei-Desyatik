@@ -28,21 +28,21 @@ describe('Protractor Demo App', function () {
     });
     it('Add new Artikelzuordnung', function () {
         center.buttonNew.click();
-        browser.wait(EC.visibilityOf(created.Publikationsteil));
-        created.Publikationsteil.click();
-        created.Und.click();
-        created.Anlegen.click();
-        expect(center.Eshop.isDisplayed()).toBe(true);
+        browser.wait(EC.visibilityOf(created.publikationsteil));
+        created.publikationsteil.click();
+        created.und.click();
+        created.anlegen.click();
+        expect(center.eshop.isPresent()).toBe(true);
     });
     it('Add Eshop', function () {
         browser.actions().sendKeys(protractor.Key.ENTER).perform();
         browser.actions().sendKeys(protractor.Key.ENTER).perform();
         browser.actions().sendKeys(protractor.Key.ARROW_UP).perform();
-        expect(rightMenu.Numer.getAttribute('value')).toEqual('11010051');
+        expect(rightMenu.es.getAttribute('value')).toEqual('11010051');
     });
     it('Cancel table', function () {
         center.refreshButton.click();
-        expect(center.Eshop2.isDisplayed()).toBe(false);
+        expect(center.eshop2.isPresent()).toBe(false);
     });
 });
 

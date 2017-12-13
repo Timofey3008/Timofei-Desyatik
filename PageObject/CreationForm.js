@@ -5,7 +5,7 @@ function CreationForm() {
         that = this;
     that.anlegen = created.$('.ng-scope').element(by.cssContainingText('button', 'Anlegen'));
     that.buttonJa = created.element(by.cssContainingText('.btn.btn-default.ng-binding', 'Ja'));
-    that.Publikationsteil = created.element(by.cssContainingText('.row.smallspacer', 'Publikationsteil')).$('.form-control.input-sm').$("[value='1352']");
-    that.Und = created.element(by.cssContainingText('.row.smallspacer', 'und der Seite')).$('.form-control.input-sm').$("[value='1591']");
-    that.Anlegen = created.element(by.cssContainingText('.btn.btn-default', 'Anlegen'));
+    that.publikationsteil = created.element(by.cssContainingText('.row.smallspacer', 'Publikationsteil')).$('.form-control.input-sm').$("[label='3911']");
+    that.und = created.element(by.cssContainingText('.row.smallspacer', 'und der Seite')).$('.form-control.input-sm').$("[label='Titel']");
+    that.anlegen = created.element(by.cssContainingText('.btn.btn-default', 'Anlegen'));
 }
