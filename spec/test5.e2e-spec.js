@@ -1,6 +1,7 @@
 var Header = require('../PageObject/Header.js'),
     Open = require('../util/Open.js'),
     Value = require('../Value/Test5.data.json'),
+    Common = require('../util/common.js'),
     that = this,
     Center = require('../PageObject/CentralTree.js');
 describe('Protractor Demo App', function () {
@@ -22,30 +23,10 @@ describe('Protractor Demo App', function () {
         expect(header.headerName.getText()).toEqual('PuC.Marketing ' + Value.Streuplan);
     });
     it('lab 5, step 4 - should save file', function () {
-        expect(that.saveFile(center.saveButton)).toBe(true);
+        Common.removeFile(browser.params.downloading.path + browser.params.downloading.fileName);
+        center.saveButton.click();
+        expect(Common.checkExistFile(browser.params.downloading.path + browser.params.downloading.fileName)).toBe(true);
     });
 
-    /**
-     * Скачивает файл
-     * @param {ElementFinder} saveButton - кнопка, после нажатия которой начинается скачивание
-     * @returns {Promise.<boolean>} - статус загрузки
-     */
-    that.saveFile = function (saveButton) {
-        var path = browser.params.downloading.path + browser.params.downloading.fileName;
-        var fs = require('fs');
 
-        if (fs.existsSync(path)) {
-            fs.unlinkSync(path);
-        }
-        browser.actions().doubleClick(center.saveButton).perform();
-
-        return browser
-            .driver
-            .wait(function () {
-                return fs.existsSync(path);
-            }, browser
-                .params
-                .visibilityWaitingTime
-                .fileDownloading);
-    };
 });

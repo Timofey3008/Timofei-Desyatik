@@ -32,20 +32,34 @@ function CommonUtil() {
                 return browser.actions().doubleClick(elem).perform()
             });
     };
-    that.click = function (elem) {
-       return browser.wait(EC.visibilityOf(elem))
-            .then(function () {
-                return elem.click();
-            });
-    };
+
     that.clearAndInput = function (elem, value) {
-      return browser.wait(EC.visibilityOf(elem))
+        return browser.wait(EC.visibilityOf(elem))
             .then(function () {
                 return elem.clear()
             })
             .then(function () {
                 return elem.sendKeys(value)
             })
-    }
-
+    };
+    that.checkExistFile = function (path) {
+        var fs = require('fs');
+        return browser
+            .driver
+            .wait(function () {
+                return fs.existsSync(path);
+            }, browser
+                .params
+                .visibilityWaitingTime
+                .fileDownloading);
+    };
+    that.removeFile = function (path) {
+        return Promise.resolve()
+            .then(function () {
+                var fs = require('fs');
+                if (fs.existsSync(path)) {
+                    return fs.unlink(path);
+                }
+            });
+    };
 }

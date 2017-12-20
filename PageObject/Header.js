@@ -1,7 +1,7 @@
 module.exports = Header;
 
 function Header() {
-    var  that = this;
+    var that = this;
 
     that.headerName = $('#header');
 }

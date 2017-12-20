@@ -13,62 +13,72 @@ function Open() {
 
     /**
      * Кликает по элементу после ожидания прорисовки
-     * @param {string} Text - текст элемента меню
+     * @param {string} textTab - текст элемента вкладки
+     * @param {string} textMenu - текст элемента меню
      */
-    that.openMenu = function (TextTab, TextMenu) {
-        var checkOpenMenu = element(by.partialLinkText(TextTab));
-        return checkOpenMenu.$('.glyphicon.pull-right').getAttribute('class')
-            .then( function (Expended) {
-                if (Expended === "glyphicon pull-right glyphicon-chevron-right") {
-                return common.waitVisibilityAndClick(element(by.partialLinkText(TextTab)));
-                }
+    that.openMenu = function (textTab, textMenu) {
+        var elemMenu = element(by.partialLinkText(textTab));
+        return elemMenu.$('.glyphicon.pull-right').getAttribute('class')
+            .then(function (string) {
+                var arr = string.split(/\s+/);
+                return arr.indexOf('glyphicon-chevron-down') !== -1;
             })
-            .then( function () {
-                return common.waitVisibilityAndClick(element(by.partialLinkText(TextMenu)));
-            })
-    };
-    that.openTree = function (TreeText, BrunchText, LeafText) {
-        var checkIfOpen = $("[aria-selected='true']");
-        common.click(element(by.cssContainingText('.aciTreeText', TreeText)));
-        return checkIfOpen.getAttribute('aria-expanded')
-            .then(function (isExpanded) {
-                if (isExpanded === "false") {
-                    return common.doubleClick(element(by.cssContainingText('.aciTreeText', TreeText)));
+            .then(function (isOpened) {
+                if (!isOpened) {
+                    return common.waitVisibilityAndClick(element(by.partialLinkText(textTab)));
                 }
             })
             .then(function () {
-                common.click(element(by.cssContainingText('.aciTreeText', BrunchText)));
-                return checkIfOpen.getAttribute('aria-expanded')
-                    .then(function (Expanded) {
-                        if (Expanded === "false") {
-                            return common.doubleClick(center.element(by.cssContainingText('.aciTreeText', BrunchText)));
+                return common.waitVisibilityAndClick(element(by.partialLinkText(textMenu)));
+            })
+    };
+    that.openTree = function (treeText, brunchText, leafText) {
+        var elemTree = $("[aria-selected='true']");
+        return common.waitVisibilityAndClick(element(by.cssContainingText('.aciTreeText', treeText)))
+            .then(function () {
+                return elemTree.getAttribute('aria-expanded')
+            })
+            .then(function (isExpanded) {
+                if (isExpanded === "false") {
+                    return common.doubleClick(element(by.cssContainingText('.aciTreeText', treeText)));
+                }
+            })
+            .then(function () {
+                return common.waitVisibilityAndClick(element(by.cssContainingText('.aciTreeText', brunchText)))
+                    .then(function () {
+                        return elemTree.getAttribute('aria-expanded')
+                    })
+                    .then(function (expanded) {
+                        if (expanded === "false") {
+                            return common.doubleClick(center.element(by.cssContainingText('.aciTreeText', brunchText)));
                         }
                     })
             })
             .then(function () {
-                return common.click(element(by.cssContainingText('.aciTreeText', LeafText)));
+                return common.waitVisibilityAndClick(element(by.cssContainingText('.aciTreeText', leafText)));
             });
     };
 
-    that.toggleTree = function (TreeName) {
-        return common.doubleClick(element(by.cssContainingText('.aciTreeText', TreeName)));
+
+    that.toggleTree = function (treeName) {
+        return common.doubleClick(element(by.cssContainingText('.aciTreeText', treeName)));
     };
-    that.click = function (Text) {
-        return common.click(element(by.cssContainingText('.aciTreeText', Text)));
+    that.click = function (text) {
+        return common.waitVisibilityAndClick(element(by.cssContainingText('.aciTreeText', text)));
     };
-    that.InputInCreationForm = function (Text, Value) {
-        return common.clearAndInput(created.element(by.cssContainingText(field, Text)).$(value), Value);
+    that.InputInCreationForm = function (text, value2) {
+        return common.clearAndInput(created.element(by.cssContainingText(field, text)).$(value), value2);
     };
-    that.inputInRightCreationForm = function (Text, Value) {
-        return common.clearAndInput(rightMenu.element(by.cssContainingText(field, Text)).$(value), Value);
+    that.inputInRightCreationForm = function (text, value2) {
+        return common.clearAndInput(rightMenu.element(by.cssContainingText(field, text)).$(value), value2);
     };
-    that.select = function (Value) {
-        return common.click(rightMenu.element(by.cssContainingText('option', Value)));
+    that.select = function (value) {
+        return common.waitVisibilityAndClick(rightMenu.element(by.cssContainingText('option', value)));
     };
-    that.creationSelect = function (Value) {
-        return common.click(created.element(by.cssContainingText('option', Value)));
+    that.creationSelect = function (value) {
+        return common.waitVisibilityAndClick(created.element(by.cssContainingText('option', value)));
     };
-    that.selectSesion = function (Name) {
-        return common.click(centr.element(by.cssContainingText('.col-md-2',Name)));
-    }
+    that.selectSesion = function (name) {
+        return common.waitVisibilityAndClick(centr.element(by.cssContainingText('.col-md-2', name)));
+    };
 }
